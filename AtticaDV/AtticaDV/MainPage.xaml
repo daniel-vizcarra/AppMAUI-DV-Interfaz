@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AtticaDV.MainPage"
+             BackgroundColor="#101408">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+     
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Column="0"
+                   Source="https://handlemycomplaint.com.au/wp-content/uploads/2022/05/attica_restaurant_logo_300x400.png"
+                   HeightRequest="50"
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="Attica Art Gallery logo" />
+
+            <SearchBar Grid.Column="1"
+                       Placeholder="Buscar"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center"
+                       Margin="10,0" />
+
+            <ImageButton Grid.Column="2"
+                         Source="https://i.pinimg.com/originals/26/9d/d1/269dd16fa1f5ff51accd09e7e1602267.png"
+                         VerticalOptions="Center"
+                         Clicked="OnMenuButtonClicked"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         BackgroundColor="Transparent" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="30,0" Spacing="25">
+                <Label Text="Bienvenido a Attica, La galeria de arte más grande del mundo."
+                       TextColor="White"
+                       Style="{StaticResource Headline}"
+                       SemanticProperties.HeadingLevel="Level1"
+                       SemanticProperties.Description="Attica" />
+
+                <Label Text="En este lugar podras buscar y adquirir arte de todas partes del mundo. Desde esculturas clásicas griegas, hasta pinturas barrocas italianas."
+                       Style="{StaticResource SubHeadline}"
+                       SemanticProperties.HeadingLevel="Level2"
+                       SemanticProperties.Description="Art" />
+
+                <CarouselView HeightRequest="200"
+                              IndicatorView="{x:Reference indicator}"
+                              IsSwipeEnabled="True"
+                              PeekAreaInsets="10"
+                              Loop="False">
+                    <CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type UriImageSource}">
+                            <UriImageSource Uri="https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvdGhlLWFnbmV3LWNsaW5pYy0xODg5LmpwZyIsInJlc2l6ZSwxNTAwfGZvcm1hdCx3ZWJwIl19.uZpnDoRIv2tedu7zKcpz2zO6tInQpqv-8VOCBojfF6E.webp" />
+                            <UriImageSource Uri="https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvdGVycmF6YS1jYWZlLXZhbi1nb2doLmpwZyIsInJlc2l6ZSwxNTAwfGZvcm1hdCx3ZWJwIl19.KddcEyGT4ug3DMAbTr8-5wZktIEOlkuEoxFz8EB1LAc.webp" />
+                            <UriImageSource Uri="https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNWQ0ZWEwMTA0OTYwNS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.x9-42X_KzV_82iudve3SzZe3R8ZnyynUUfmrrVgz46w.webp" />
+                            <UriImageSource Uri="https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjYzNmQ0MGU1NzNmZC5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.9Tg3kHmnni8OxAVWaBRYr877oUbXa8wt-v_3tvT05eU.webp"/>
+                            <UriImageSource Uri="https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvOTFnbzd0cXVhaGwtX3NsMTUwMF8uanBnIiwicmVzaXplLDE1MDB8Zm9ybWF0LHdlYnAiXX0.NfwggRxvlDciwMPkVD20Qk-oxvVKjQdQzrB-ykgpDcQ.webp"/>
+                        </x:Array>
+                    </CarouselView.ItemsSource>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding .}"
+                                   Aspect="AspectFit"
+                                   SemanticProperties.Description="Sample art piece" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+
+                <IndicatorView x:Name="indicator" HorizontalOptions="Center" />
+
+                <Button x:Name="ExploreBtn"
+                        Text="Eplora más obras de arte"
+                        SemanticProperties.Hint="Browse our entire art collection"
+                        HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Frame x:Name="menuPopup"
+               IsVisible="False"
+               BackgroundColor="#101408"
+               CornerRadius="10"
+               Padding="10"
+               Margin="0,50,10,0"
+               VerticalOptions="Start"
+               HorizontalOptions="End"
+               Opacity="0.9"
+               Grid.Row="1">
+               
+            <StackLayout>
+                <Label Text="Artists"
+                       Padding="10"
+                       TextColor="White"
+                       BackgroundColor="Transparent"/>
+                <Label Text="Art pieces"
+                       Padding="10"
+                       TextColor="White"
+                       BackgroundColor="Transparent"/>
+                <Label Text="Galleries"
+                       Padding="10"
+                       TextColor="White"
+                       BackgroundColor="Transparent"/>
+            </StackLayout>
+            
+        </Frame>
+    </Grid>
+</ContentPage>
